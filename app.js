@@ -10,11 +10,11 @@ app.set("views",path.resolve("./views"))
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-link = "mongodb+srv://susmik787_db_user:susmiK123@cluster0.fjuasv4.mongodb.net/?retryWrites=true&w=majority" 
-connectDB(link);
+
+connectDB(process.env.MONGO_URI);
 app.use('/', urlRoutes);
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on http://localhost:${PORT}`);
