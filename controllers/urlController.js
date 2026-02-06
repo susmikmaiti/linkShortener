@@ -1,7 +1,9 @@
 // controllers/urlController.js
 const shortid = require('shortid');
 const Url = require('../models/urlModel'); //so here Url becomes the model
-const baseUrl = "http://localhost:3000";
+
+const baseUrl = `${req.protocol}://${req.get('host')}`;
+
 
 exports.shortenUrl = async (req, res) => {
   const { originalUrl } = req.body;
